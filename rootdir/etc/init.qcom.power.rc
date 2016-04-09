@@ -31,6 +31,16 @@ on early-init
 on boot
     trigger enable-low-power
 
+<<<<<<< HEAD
+=======
+on property:sys.boot_completed=1
+    # Disable Interactive thread boosting
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
+    # Stop MPDecision so the option shows
+    stop mpdecision
+
+>>>>>>> 802e14e... Fix ramdisk
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
@@ -103,17 +113,28 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
+<<<<<<< HEAD
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 29000
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 59000
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 119000
+=======
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 95
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1026000
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "75 1026000:80 1458000:85 1890000:90"
+>>>>>>> 802e14e... Fix ramdisk
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
+<<<<<<< HEAD
     write /sys/module/cpu_boost/parameters/sync_threshold 1566000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1458000
     write /sys/module/cpu_boost/parameters/load_based_syncs 1
@@ -122,6 +143,10 @@ on enable-low-power
 
     rm /data/system/perfd/default_values
     start mpdecision
+=======
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0:1026000 1:0 2:0 3:0
+    write /sys/module/cpu_boost/parameters/sync_threshold 1242000
+>>>>>>> 802e14e... Fix ramdisk
 
 on property:init.svc.recovery=running
     trigger enable-low-power
@@ -142,6 +167,7 @@ on property:dev.bootcomplete=1
     # Set iosched
     setprop sys.io.scheduler bfq
 
+<<<<<<< HEAD
 # Configure IO scheduler
 on property:sys.io.scheduler=*
     write /sys/block/mmcblk1/queue/scheduler ${sys.io.scheduler}
@@ -153,3 +179,6 @@ on property:sys.io.scheduler=cfq
 # Set slice_idle to 0 for BFQ
 on property:sys.io.scheduler=bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
+=======
+    rm /data/system/perfd/default_values
+>>>>>>> 802e14e... Fix ramdisk
