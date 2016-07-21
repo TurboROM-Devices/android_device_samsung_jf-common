@@ -142,4 +142,3 @@ on property:dev.bootcomplete=1
     setprop sys.io.scheduler bfq
     write /sys/block/mmcblk1/queue/scheduler bfq
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
-
