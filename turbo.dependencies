@@ -8,7 +8,7 @@
   {
     "remote": "github",
     "repository": "TurboROM-Devices/device_samsung_qcom-commom",
-    "target_path": "device/qcom/common",
+    "target_path": "device/samsung/qcom-common",
     "branch": "mm"
   },
   {
