@@ -73,7 +73,8 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    tinymix
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -181,6 +182,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 # Samsung symbols
@@ -203,7 +205,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader \
-    dhcpcd.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
