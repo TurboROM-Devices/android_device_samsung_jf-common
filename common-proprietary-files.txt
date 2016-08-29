@@ -96,7 +96,6 @@ vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 
 # Graphics
-<<<<<<< HEAD
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
