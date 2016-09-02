@@ -183,9 +183,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
-# Samsung symbols
+# RIL
 PRODUCT_PACKAGES += \
-    libsamsung_symbols
+    libshim_ril
 
 # SPN override
 PRODUCT_COPY_FILES += \
